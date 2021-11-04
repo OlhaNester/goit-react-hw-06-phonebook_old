@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "prettier-eslint": "^13.0.0"
   }
 }
