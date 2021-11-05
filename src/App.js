@@ -9,8 +9,8 @@ import shortid from "shortid";
 
 class App extends Component {
   state = {
-    contacts: [],
-    filter: "",
+    // contacts: [],
+    // filter: "",
     showModal: false,
   };
 
@@ -24,37 +24,37 @@ class App extends Component {
     }));
   };
 
-  addContact = ({ name, number }) => {
-    const newContact = {
-      id: shortid.generate(),
-      name: name,
-      number: number,
-    };
-    if (
-      // несколько вариантов сравнения и записи новых имен
-      //this.state.contacts.map((contact) => contact.name).includes(contact.name)
-      this.state.contacts.find(
-        (contact) => contact.name === newContact.name
-      ) !== undefined
-      // this.state.contacts.filter((contact) => contact.name === newContact.name)
-      //   .length !== 0
-    ) {
-      alert(`${newContact.name} is already in contacts`);
-    } else {
-      this.setState((prevState) => ({
-        contacts: [newContact, ...prevState.contacts],
-      }));
-    }
-    this.toggleModal();
-  };
+  // addContact = ({ name, number }) => {
+  //   const newContact = {
+  //     id: shortid.generate(),
+  //     name: name,
+  //     number: number,
+  //   };
+  //   if (
+  //     // несколько вариантов сравнения и записи новых имен
+  //     //this.state.contacts.map((contact) => contact.name).includes(contact.name)
+  //     this.state.contacts.find(
+  //       (contact) => contact.name === newContact.name
+  //     ) !== undefined
+  //     // this.state.contacts.filter((contact) => contact.name === newContact.name)
+  //     //   .length !== 0
+  //   ) {
+  //     alert(`${newContact.name} is already in contacts`);
+  //   } else {
+  //     this.setState((prevState) => ({
+  //       contacts: [newContact, ...prevState.contacts],
+  //     }));
+  //   }
+  //   this.toggleModal();
+  // };
 
-  deleteContact = (contactId) => {
-    this.setState((prevState) => ({
-      contacts: prevState.contacts.filter(
-        (contact) => contact.id !== contactId
-      ),
-    }));
-  };
+  // deleteContact = (contactId) => {
+  //   this.setState((prevState) => ({
+  //     contacts: prevState.contacts.filter(
+  //       (contact) => contact.id !== contactId
+  //     ),
+  //   }));
+  // };
 
   filterContact = (event) => {
     this.setState({ filter: event.currentTarget.value });
@@ -67,21 +67,21 @@ class App extends Component {
       contact.name.toLowerCase().includes(normolizeFilter)
     );
   };
-  componentDidMount() {
-    const contacts = localStorage.getItem("contacts");
-    const parseContacts = JSON.parse(contacts);
+  // componentDidMount() {
+  //   const contacts = localStorage.getItem("contacts");
+  //   const parseContacts = JSON.parse(contacts);
 
-    if (parseContacts) {
-      this.setState({ contacts: parseContacts });
-    }
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-    }
-  }
+  //   if (parseContacts) {
+  //     this.setState({ contacts: parseContacts });
+  //   }
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.contacts !== prevState.contacts) {
+  //     localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+  //   }
+  // }
   render() {
-    const filteredContactList = this.getfilteredContactList();
+    //  const filteredContactList = this.getfilteredContactList();
     return (
       <div className="App">
         <h1> Phonebook </h1>
@@ -94,11 +94,11 @@ class App extends Component {
         </Modal>}
         
         <h2> Contacts </h2>
-        <Filter value={this.state.filter} onChange={this.filterContact} />
-        <ContactList
+        {/* <Filter value={this.state.filter} onChange={this.filterContact} /> */}
+        {/* <ContactList
           contacts={filteredContactList}
           onDelete={this.deleteContact}
-        />
+        /> */}
       </div>
     );
   }
