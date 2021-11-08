@@ -58,8 +58,7 @@ class Form extends Component {
         </label>
 
         <button type="submit" className="button">
-          {" "}
-          Add contact
+            Add contact
         </button>
       </form>
     );

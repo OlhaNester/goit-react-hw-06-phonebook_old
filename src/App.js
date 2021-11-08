@@ -56,17 +56,11 @@ class App extends Component {
   //   }));
   // };
 
-  filterContact = (event) => {
-    this.setState({ filter: event.currentTarget.value });
-  };
+  // filterContact = (event) => {
+  //   this.setState({ filter: event.currentTarget.value });
+  // };
 
-  getfilteredContactList = () => {
-    const { filter, contacts } = this.state;
-    const normolizeFilter = filter.toLowerCase();
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(normolizeFilter)
-    );
-  };
+  
   // componentDidMount() {
   //   const contacts = localStorage.getItem("contacts");
   //   const parseContacts = JSON.parse(contacts);
@@ -89,16 +83,16 @@ class App extends Component {
           Add Contact
         </button>
         {this.state.showModal && <Modal onClose={this.toggleModal}>
-          <Form onSubmit={this.addContact} />
+          <Form  />
          
         </Modal>}
         
         <h2> Contacts </h2>
-        {/* <Filter value={this.state.filter} onChange={this.filterContact} /> */}
-        {/* <ContactList
-          contacts={filteredContactList}
+        <Filter  />
+        <ContactList
+          // contacts={filteredContactList}
           onDelete={this.deleteContact}
-        /> */}
+        />
       </div>
     );
   }

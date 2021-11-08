@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import phonebookActions from '../../Redux/phonebook-actions';
 import "./ContactList.css";
 import IconButton from "../IconButton/IconButton";
 import { ReactComponent as DeleteContact } from "./bin.svg";
@@ -19,5 +21,10 @@ const ContactList = ({ contacts, onDelete }) => {
     </ul>
   );
 };
-
-export default ContactList;
+const mapStateToProps = state => ({
+  contacts: state.contacts.items,
+})
+const mapDispatchToProps = dispatch => ({
+  onDelete: (id)=>dispatch(phonebookActions.deleteContact(id)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

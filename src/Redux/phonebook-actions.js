@@ -18,4 +18,9 @@ const deleteContact = (contactId) => ({
 
 })
 
-export default { addContact, deleteContact };
+const filter = (value) => ({
+    type: types.FILTER,
+    payload: value,
+});
+
+export default { addContact, deleteContact, filter };
