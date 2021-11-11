@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import phonebookActions from "../../Redux/phonebook-actions";
+import phonebookActions from "../../redux/phonebook-actions";
 
 import "./Form.css";
 
@@ -58,14 +58,15 @@ class Form extends Component {
         </label>
 
         <button type="submit" className="button">
-            Add contact
+          Add contact
         </button>
       </form>
     );
   }
 }
-const mapDispatchToProps = dispatch => ({
- onSubmit: ({name, number})=> dispatch(phonebookActions.addContact({name, number})),
-})
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: ({ name, number }) =>
+    dispatch(phonebookActions.addContact({ name, number })),
+});
 
 export default connect(null, mapDispatchToProps)(Form);

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import phonebookActions from '../../Redux/phonebook-actions';
+import phonebookActions from "../../redux/phonebook-actions";
 
 const Filter = ({ value, onChange }) => {
   return (
@@ -11,26 +11,13 @@ const Filter = ({ value, onChange }) => {
   );
 };
 
-const getfilteredContactList = (contacts, filter) => {
-    const { filter, contacts } = this.state;
-    const normolizeFilter = filter.toLowerCase();
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(normolizeFilter)
-    );
-};
-  
+const mapStateToProps = (state) => ({
+  value: state.contacts.filter,
+});
 
-const mapStateToProps = (state) => {
-  const { filter, items } = state.contacts;
-  const normolizeFilter = filter.toLowerCase();
-  const filteredContactList = items.filter((contact) =>
-    contact.name.toLowerCase().includes(normolizeFilter))
-  
-  return { contacts: filteredContactList, }
-};
-
-const mapDispatchToProps =dispatch=>  ({
-  onChange: (event)=>dispatch(phonebookActions.filter(event.target.value)),
-})
+const mapDispatchToProps = (dispatch) => ({
+  onChange: (event) =>
+    dispatch(phonebookActions.filterContact(event.target.value)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
