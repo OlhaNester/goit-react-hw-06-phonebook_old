@@ -4,7 +4,8 @@ import types from "./phonebook-types";
 // const state = {
 //     contacts: {
 //         items: [],
-//         filter: ''
+//         filter: '',
+//         showModal: false,
 //     }
 // };
 
@@ -28,7 +29,18 @@ const filter = (state = "", { type, payload }) => {
   }
 };
 
+const showModal = (state = false, { type, payload }) => {
+  switch (type) {
+    case types.TOGGLE_MODAL:
+      return state;
+
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   items,
   filter,
+  showModal,
 });

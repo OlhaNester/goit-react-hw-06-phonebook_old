@@ -5,7 +5,8 @@ import phonebookReducer from './phonebook-reducer';
 // const state = {
 //     contacts: {
 //         items: [],
-//         filters: ''
+//         filters: '', 
+//         showModal: false,
 //     }
 // };
 

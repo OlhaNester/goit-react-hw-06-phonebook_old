@@ -1,9 +1,11 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import "./App.css";
 import Form from "./components/Form";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
 import Modal from "./components/Modal/Modal";
+import phonebookActions from '../src/redux/phonebook-actions';
 //import IconButton from "./components/IconButton/IconButton";
 import shortid from "shortid";
 
@@ -11,18 +13,18 @@ class App extends Component {
   state = {
     // contacts: [],
     // filter: "",
-    showModal: false,
+    //showModal: false,
   };
 
   // formHandleSubmit = (data) => {
   //   console.log(data);
   // };
 
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-    }));
-  };
+  // toggleModal = () => {
+  //   this.setState(({ showModal }) => ({
+  //     showModal: !showModal,
+  //   }));
+  // };
 
   // addContact = ({ name, number }) => {
   //   const newContact = {
@@ -89,13 +91,17 @@ class App extends Component {
         
         <h2> Contacts </h2>
         <Filter  />
-        <ContactList
-          // contacts={filteredContactList}
-          onDelete={this.deleteContact}
-        />
+        <ContactList/>
       </div>
     );
   }
 }
+const mapStateToProps = ({ showModal }) => {
+  return showModal;
+}
 
-export default App;
+const mapDispatchToProps =(dispatch)=> ({
+ toggleModal: () =>dispatch(phonebookActions.modal)
+})
+
+export default connect (mapStateToProps, mapDispatchToProps)(App);

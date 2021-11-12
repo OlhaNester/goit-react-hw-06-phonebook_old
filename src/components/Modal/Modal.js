@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { createPortal } from "react-dom";
 import "./Modal.css";
+import phonebookActions from "../../redux/phonebook-actions";
 
 const modalRoot = document.querySelector("#modalRoot");
 
@@ -30,4 +32,16 @@ export default class Modal extends Component {
       </div>, modalRoot
     );
   }
-}
+};
+const mapStateToProps = (state) => {
+  const { showModal } = state.contacts;
+  return { showModal: !showModal }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  handleBackDrop: (event) => dispatch(phonebookActions.modal()),
+});
+
+
+connect(mapStateToProps, mapDispatchToProps)(Modal);
+
