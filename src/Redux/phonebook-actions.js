@@ -20,10 +20,4 @@ const filterContact = (value) => ({
   payload: value,
 });
 
-const modal = ({ showModal }) => ({
-  type: types.TOGGLE_MODAL,
-  payload: { showModal: !showModal, }
-
-});
-
-export default { addContact, deleteContact, filterContact, modal };
+export default { addContact, deleteContact, filterContact };

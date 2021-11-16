@@ -1,21 +1,18 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import phonebookReducer from './phonebook-reducer';
+import { createStore, combineReducers } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import phonebookReducer from "./phonebook-reducer";
 
 // const state = {
 //     contacts: {
 //         items: [],
-//         filters: '', 
-//         showModal: false,
+//         filters: '',
+//
 //     }
 // };
 
 const rootReducer = combineReducers({
-    contacts: phonebookReducer,
+  contacts: phonebookReducer,
 });
 
-
-
-const store = createStore(rootReducer, composeWithDevTools ());
+const store = createStore(rootReducer, composeWithDevTools());
 export default store;
-    

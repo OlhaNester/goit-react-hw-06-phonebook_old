@@ -5,26 +5,26 @@ import Form from "./components/Form";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
 import Modal from "./components/Modal/Modal";
-import phonebookActions from '../src/redux/phonebook-actions';
+import phonebookActions from "../src/redux/phonebook-actions";
 //import IconButton from "./components/IconButton/IconButton";
-import shortid from "shortid";
+//import shortid from "shortid";
 
 class App extends Component {
   state = {
     // contacts: [],
     // filter: "",
-    //showModal: false,
+    showModal: false,
   };
 
   // formHandleSubmit = (data) => {
   //   console.log(data);
   // };
 
-  // toggleModal = () => {
-  //   this.setState(({ showModal }) => ({
-  //     showModal: !showModal,
-  //   }));
-  // };
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
 
   // addContact = ({ name, number }) => {
   //   const newContact = {
@@ -62,7 +62,6 @@ class App extends Component {
   //   this.setState({ filter: event.currentTarget.value });
   // };
 
-  
   // componentDidMount() {
   //   const contacts = localStorage.getItem("contacts");
   //   const parseContacts = JSON.parse(contacts);
@@ -84,24 +83,25 @@ class App extends Component {
         <button type="button" className="button" onClick={this.toggleModal}>
           Add Contact
         </button>
-        {this.state.showModal && <Modal onClose={this.toggleModal}>
-          <Form  />
-         
-        </Modal>}
-        
+        {this.state.showModal && (
+          <Modal onClose={this.toggleModal}>
+            <Form onClose={this.toggleModal} />
+          </Modal>
+        )}
+
         <h2> Contacts </h2>
-        <Filter  />
-        <ContactList/>
+        <Filter />
+        <ContactList />
       </div>
     );
   }
 }
 const mapStateToProps = ({ showModal }) => {
   return showModal;
-}
+};
 
-const mapDispatchToProps =(dispatch)=> ({
- toggleModal: () =>dispatch(phonebookActions.modal)
-})
+const mapDispatchToProps = (dispatch) => ({
+  toggleModal: () => dispatch(phonebookActions.modal),
+});
 
-export default connect (mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

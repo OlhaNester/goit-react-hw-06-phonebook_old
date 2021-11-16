@@ -16,8 +16,16 @@ class Form extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
+    if (
+      this.props.contacts
+        .map((contact) => contact.name)
+        .includes(this.state.name)
+    ) {
+      alert(`${this.state.name} is already in contacts`);
+    }
 
     this.props.onSubmit(this.state);
+    this.props.onClose();
     this.reset();
   };
 
@@ -64,9 +72,12 @@ class Form extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  contacts: state.contacts.items,
+});
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: ({ name, number }) =>
     dispatch(phonebookActions.addContact({ name, number })),
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
