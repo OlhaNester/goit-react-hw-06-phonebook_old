@@ -22,11 +22,12 @@ class Form extends Component {
         .includes(this.state.name)
     ) {
       alert(`${this.state.name} is already in contacts`);
+      
     }
-
-    this.props.onSubmit(this.state);
+else 
+    {this.props.onSubmit(this.state);
     this.props.onClose();
-    this.reset();
+    this.reset();}
   };
 
   reset = () => {
