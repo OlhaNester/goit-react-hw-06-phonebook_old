@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { createReducer } from '@reduxjs/toolkit';
-import types from "./phonebook-types";
+import { createReducer } from "@reduxjs/toolkit";
+import actions from "./phonebook-actions";
 
 // const state = {
 //     contacts: {
@@ -11,20 +11,14 @@ import types from "./phonebook-types";
 // };
 
 const items = createReducer([], {
-  'contact/add': (state, { payload }) => [...state, payload],
-  'contact/delete': (state, { payload }) => state.filter(({ id }) => id !== payload),
+  [actions.addContact]: (state, { payload }) => [...state, payload],
+  [actions.deleteContact]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 
-
-const filter = (state = "", { type, payload }) => {
-  switch (type) {
-    case types.FILTER:
-      return payload;
-
-    default:
-      return state;
-  }
-};
+const filter = createReducer("", {
+  [actions.filterContact]: (state, { payload }) => payload,
+});
 
 export default combineReducers({
   items,
