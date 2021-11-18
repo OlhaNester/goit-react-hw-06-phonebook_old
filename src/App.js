@@ -96,12 +96,12 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = ({ showModal }) => {
-  return showModal;
-};
+// const mapStateToProps = ({ showModal }) => {
+//   return showModal;
+// };
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleModal: () => dispatch(phonebookActions.modal),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   toggleModal: () => dispatch(phonebookActions.modal),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
