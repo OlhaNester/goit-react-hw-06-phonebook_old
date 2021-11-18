@@ -104,4 +104,5 @@ class App extends Component {
 //   toggleModal: () => dispatch(phonebookActions.modal),
 // });
 
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;
