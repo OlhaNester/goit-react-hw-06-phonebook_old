@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { connect } from "react-redux";
 import "./App.css";
 import Form from "./components/Form";
 import ContactList from "./components/ContactList";
@@ -61,6 +60,13 @@ class App extends Component {
   // filterContact = (event) => {
   //   this.setState({ filter: event.currentTarget.value });
   // };
+  // getFilterContact = () => {
+  //   const { contacts, filter } = this.state;
+  //   const normaFilter = filter.toLowerCase();
+  //   return contacts.filter((contact) =>
+  //     contact.name.toLowerCase().includes(normaFilter)
+  //   );
+  // };
 
   // componentDidMount() {
   //   const contacts = localStorage.getItem("contacts");
@@ -96,13 +102,5 @@ class App extends Component {
     );
   }
 }
-// const mapStateToProps = ({ showModal }) => {
-//   return showModal;
-// };
 
-// const mapDispatchToProps = (dispatch) => ({
-//   toggleModal: () => dispatch(phonebookActions.modal),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;

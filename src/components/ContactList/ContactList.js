@@ -25,15 +25,18 @@ const ContactList = ({ contacts, onDelete }) => {
 const getfilteredContactList = (allContacts, filter) => {
   const normolizeFilter = filter.toLowerCase();
 
-  return allContacts.filter((item) =>
-    item.name.toLowerCase().includes(normolizeFilter)
-  );
+  return 
+    allContacts.filter(({ name }) =>
+      name.toLowerCase().includes(normolizeFilter)
+    )
+  
 };
+
+
 const mapStateToProps = (state) => {
   const { items, filter } = state.contacts;
-
+  const normolizeFilter = filter.toLowerCase();
   const visibleContacts = getfilteredContactList(items, filter);
-
   return {
     contacts: visibleContacts,
   };
@@ -41,4 +44,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onDelete: (id) => dispatch(phonebookActions.deleteContact(id)),
 });
+
+
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
