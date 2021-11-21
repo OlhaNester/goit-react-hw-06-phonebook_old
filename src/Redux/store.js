@@ -40,7 +40,9 @@ const middleware = [
 ];
 
 const store = configureStore({
-  reducer: persistReducer(contactPersistConfig, phonebookReducer),
+  reducer: {
+    contacts: persistReducer(contactPersistConfig, phonebookReducer),
+  },
   middleware,
   devTools: process.env.NODE_ENV === "development",
 });

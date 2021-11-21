@@ -4,7 +4,7 @@ import Form from "./components/Form";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
 import Modal from "./components/Modal/Modal";
-import phonebookActions from "../src/redux/phonebook-actions";
+
 //import IconButton from "./components/IconButton/IconButton";
 //import shortid from "shortid";
 
