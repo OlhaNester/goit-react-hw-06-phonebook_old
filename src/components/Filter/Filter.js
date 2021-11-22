@@ -12,12 +12,11 @@ const Filter = ({ value, onChange }) => {
 };
 
 const mapStateToProps = (state) => ({
-    value: state.contacts.filter,
+  value: state.contacts.filter,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onChange: (event) =>
-    dispatch(phonebookActions.filterContact(event.target.value)),
-});
+const mapDispatchToProps = {
+  onChange: (event) => phonebookActions.filterContact(event.target.value),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

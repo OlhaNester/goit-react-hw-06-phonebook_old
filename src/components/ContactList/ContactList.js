@@ -35,15 +35,14 @@ const getfilteredContactList = (allContacts, filter) => {
 const mapStateToProps = (state) => {
   const { items, filter } = state.contacts;
   const normolizeFilter = filter.toLowerCase();
-  console.log(items);
-  console.log(items);
+
   const visibleContacts = getfilteredContactList(items, filter);
   return {
     contacts: visibleContacts,
   };
 };
-const mapDispatchToProps = (dispatch) => ({
-  onDelete: (id) => dispatch(phonebookActions.deleteContact(id)),
-});
+const mapDispatchToProps = {
+  onDelete: phonebookActions.deleteContact,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
